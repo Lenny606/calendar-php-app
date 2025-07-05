@@ -57,7 +57,30 @@ include __DIR__ . '/src/calendar.php';
 
 <script>
 //    events from DTB
-    const events = <?php json_encode($dtbEvents, JSON_UNESCAPED_UNICODE) ?>;
+    const events = <?php echo json_encode([
+    [
+        'id' => 1,
+        'title' => 'Team Meeting',
+        'date' => '2025-07-05',
+        'startTime' => '09:00',
+        'endTime' => '10:00'
+    ],
+    [
+        'id' => 2,
+        'title' => 'Project Review',
+        'date' => '2025-07-06',
+        'startTime' => '14:00',
+        'endTime' => '15:30'
+    ],
+    [
+        'id' => 3,
+        'title' => 'Client Call',
+        'date' => '2025-07-07',
+        'startTime' => '11:00',
+        'endTime' => '12:00'
+    ]
+], JSON_UNESCAPED_UNICODE); ?>
+
 </script>
 
 </body>

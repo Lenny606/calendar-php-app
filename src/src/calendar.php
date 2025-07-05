@@ -155,28 +155,28 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
 //GET DATA
 /** @var mysqli $connection */
-$query= $connection->query("SELECT * FROM events");
-if ($query && $query->num_rows > 0) {
-    while ($row = $query->fetch_assoc()) {
-
-        $day = (new DateTime($row["date"]));
-        $startTime = (new DateTime($row["start_time"]))->format('H:i');
-        $endTime = (new DateTime($row["end_time"]))->format('H:i');
-
-        while ($startTime <= $endTime) {
-            $dtbEvents[] = [
-                'id' => $row["id"],
-                'title' => $row["title"],
-                'date' => $day->format('Y-m-d'),
-                'startTime' => $startTime,
-                'endTime' => $endTime
-            ];
-
-            //every time add 1 day
-            $day->modify('+1 day');
-        }
-
-    }
-}
-
-$connection->close();
+////$query= $connection->query("SELECT * FROM events");
+//if ($query && $query->num_rows > 0) {
+//    while ($row = $query->fetch_assoc()) {
+//
+//        $day = (new DateTime($row["date"]));
+//        $startTime = (new DateTime($row["start_time"]))->format('H:i');
+//        $endTime = (new DateTime($row["end_time"]))->format('H:i');
+//
+//        while ($startTime <= $endTime) {
+//            $dtbEvents[] = [
+//                'id' => $row["id"],
+//                'title' => $row["title"],
+//                'date' => $day->format('Y-m-d'),
+//                'startTime' => $startTime,
+//                'endTime' => $endTime
+//            ];
+//
+//            //every time add 1 day
+//            $day->modify('+1 day');
+//        }
+//
+//    }
+//}
+//
+//$connection->close();

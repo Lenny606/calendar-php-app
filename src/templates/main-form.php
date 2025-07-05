@@ -27,6 +27,7 @@
     <!--     ACTIONs    -->
     <input type="hidden" id="form-action" name="form-action" value="create">
     <input type="hidden" id="event-create-id" name="event-create-id" value>
+    <input type="hidden" id="event-edit-id" name="event-edit-id" value>
 
     <div class="form-group">
         <button type="submit" class="submit-btn">Create Event</button>
@@ -46,4 +47,3 @@
 
 
 </form>
-

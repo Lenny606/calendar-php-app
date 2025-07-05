@@ -1,5 +1,5 @@
-|<?php
-
+<?php
+return "";
 try {
     // Kontrola existence proměnných prostředí
     $required = ['DB_HOST', 'DB_USERNAME', 'DB_PASSWORD', 'DB_DATABASE'];
