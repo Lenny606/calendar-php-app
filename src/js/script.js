@@ -125,3 +125,36 @@ function openModalCreate(date) {
     modalElement.style.display = "flex";
 }
 
+function openModalEdit(events) {
+    document.getElementById("form-action").value = "edit";
+    modalElement.style.display = "flex";
+
+    const selector = document.getElementById("eventSelector");
+    const selectorWrapper = document.getElementById("eventSelectorWrapper");
+
+    selector.innerHTML = "<option value='' disabled>Select Event</option>";
+    events.forEach(e => {
+        selector.innerHTML += `<option value='${e.id}'>${e.title}</option>`;
+    })
+    if (events.length > 0) {
+        selectorWrapper.style.display = "block";
+    } else {
+        selectorWrapper.style.display = "none";
+    }
+
+    handleEventSelection(JSON.stringify(events[0]))
+
+}
+
+function handleEventSelection(eventJson) {
+    const event = JSON.parse(eventJson);
+
+    document.getElementById("event-edit-id").value = event.id || "";
+    document.getElementById("event-delete-id").value = event.id || "";
+    document.getElementById("event-title").value = event.title || "";
+    document.getElementById("event-date").value = event.date || "";
+    document.getElementById("event-start-time").value = event.startTime || "";
+    document.getElementById("event-end-time").value = event.endTime || "";
+
+
+}
