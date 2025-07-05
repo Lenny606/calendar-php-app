@@ -43,6 +43,7 @@
     <div class="form-group">
         <button type="submit" class="submit-btn">Delete Event</button>
     </div>
+
+
 </form>
 
-<button class="cancel-btn submit-btn" type="button">Cancel</button>

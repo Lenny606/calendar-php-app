@@ -42,7 +42,7 @@ header {
 }
 
 /* Calendar Styles */
-.calendar-container {
+.calendar-container, .form-container {
     max-width: 800px;
     margin: 0 auto;
     background-color: #fff;
