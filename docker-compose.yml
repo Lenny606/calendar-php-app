@@ -25,6 +25,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
       MYSQL_PASSWORD: ${DB_PASSWORD:-password}
       MYSQL_USER: ${DB_USERNAME:-app}
+      MYSQL_HOST: ${DB_HOST}
     volumes:
       - mysql-data:/var/lib/mysql
     networks:

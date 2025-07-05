@@ -21,7 +21,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: var( --light-color);
+    background-color: var(--light-color);
     padding: 20px;
 }
 
@@ -292,4 +292,20 @@ header {
 
 .submit-btn:hover {
     background-color: #2980b9;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 1024px) {
+    .calendar-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+    }
 }
