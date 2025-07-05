@@ -75,12 +75,10 @@ function renderCalendar(date = new Date()) {
         addButton.className = "btn-overlay";
         addButton.textContent = "Add Event";
 
-        addButton.onclick(
-            (e) => {
-                e.stopPropagation();
-                openModalCreate(dayString)
-            }
-        )
+        addButton.onclick = (e) => {
+            e.stopPropagation();
+            openModalCreate(dayString)
+        };
 
         overlay.appendChild(addButton);
 
@@ -89,13 +87,17 @@ function renderCalendar(date = new Date()) {
             editButton.className = "btn-overlay";
             editButton.textContent = "Edit Event";
 
-            editButton.onclick(
-                (e) => {
-                    e.stopPropagation();
-                    openModalEdit(eventToday)
-                }
-            )
-            overlay.appendChild(eventToday);
+            editButton.onclick = (e) => {
+                e.stopPropagation();
+                openModalEdit(eventToday)
+            }
+
+            // Iterate through each event in eventToday and create/append an element
+            eventToday.forEach(event => {
+                const eventElement = document.createElement('div'); // Or whatever element type is appropriate
+                eventElement.textContent = event.title; // Assuming event has a title property
+                overlay.appendChild(eventElement);
+            });
         }
 
         dayCell.appendChild(overlay);
@@ -171,9 +173,9 @@ function clock() {
     const now = new Date();
     const clock = document.getElementById("clock");
     clock.textContent = [
-        now.getHours().toString().padStart(2,"0"),
-        now.getMinutes().toString().padStart(2,"0"),
-        now.getSeconds().toString().padStart(2,"0")
+        now.getHours().toString().padStart(2, "0"),
+        now.getMinutes().toString().padStart(2, "0"),
+        now.getSeconds().toString().padStart(2, "0")
     ].join(":")
 }
 
