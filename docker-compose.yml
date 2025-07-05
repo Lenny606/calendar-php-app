@@ -10,6 +10,12 @@ services:
     restart: unless-stopped
     volumes:
       - ./src:/var/www/html
+    environment:
+      DB_DATABASE: ${DB_DATABASE:-app}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+      DB_USERNAME: ${DB_USERNAME:-app}
+      DB_HOST: ${DB_HOST}
     networks:
       - app-network
     depends_on:
@@ -21,11 +27,11 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-app}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
-      MYSQL_USER: ${DB_USERNAME:-app}
-      MYSQL_HOST: ${DB_HOST}
+      DB_DATABASE: ${DB_DATABASE:-app}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+      DB_USERNAME: ${DB_USERNAME:-app}
+      DB_HOST: ${DB_HOST}
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
