@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
- <?php include "./templates/title.php" ?>
+<?php include "./templates/title.php" ?>
 <section class="clock-container">
     <div class="clock" id="clock"></div>
 </section>
@@ -31,6 +31,9 @@
             <option value="" disabled selected>Choose event ...</option>
         </select>
     </div>
+
+    <!--     MAIN FORM -->
+    <?php include "./templates/main-form.php" ?>
 
 </section>
 </body>
