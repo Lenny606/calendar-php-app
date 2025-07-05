@@ -1,3 +1,6 @@
+<?php
+include __DIR__ . '/src/calendar.php';
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -52,7 +55,10 @@
     </div>
 </div>
 
-
+<script>
+//    events from DTB
+    const events = <?php json_encode($dtbEvents, JSON_UNESCAPED_UNICODE) ?>;
+</script>
 
 </body>
 </html>

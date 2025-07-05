@@ -5,7 +5,29 @@ include __DIR__ . "/../db/connection.php";
 //Define variables
 $successMessage = "";
 $errorMessage = "";
-$dtbEvents = [];
+$dtbEvents = [
+    [
+        'id' => 1,
+        'title' => 'Team Meeting',
+        'date' => '2025-07-05',
+        'startTime' => '09:00',
+        'endTime' => '10:00'
+    ],
+    [
+        'id' => 2,
+        'title' => 'Project Review',
+        'date' => '2025-07-06',
+        'startTime' => '14:00',
+        'endTime' => '15:30'
+    ],
+    [
+        'id' => 3,
+        'title' => 'Client Call',
+        'date' => '2025-07-07',
+        'startTime' => '11:00',
+        'endTime' => '12:00'
+    ]
+];
 
 
 //CREATE
@@ -111,6 +133,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     exit;
 }  //DELETE
 
+
+// Clear any previous events array
+$dtbEvents = [];
 
 // MESSAGES AFTER SUBMIT ------------------------
 if ($_SERVER['GET']) {
