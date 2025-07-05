@@ -26,22 +26,33 @@
     <div id="calendar" class="calendar-grid">
 
     </div>
+</section>
 
-    <!--    modal  -->
-    <div class="selector modal " id="eventSelectorWrapper">
-        <label for="eventSelector"><strong>Select Events</strong></label>
-        <select id="eventSelector">
-            <option value="" disabled selected>Choose event ...</option>
-        </select>
+<!--    modal  -->
+<div class="modal" id="eventModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Event Details</h3>
+            <button class="close-btn" type="button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="selector" id="eventSelectorWrapper">
+                <label for="eventSelector"><strong>Select Events</strong></label>
+                <select id="eventSelector">
+                    <option value="" disabled selected>Choose event ...</option>
+                </select>
+            </div>
+
+            <!--     MAIN FORM -->
+            <?php include "./templates/main-form.php" ?>
+
+            <button class="cancel-btn submit-btn" type="button">Cancel</button>
+        </div>
     </div>
-</section>
+</div>
 
-<section class="form-container">
-    <!--     MAIN FORM -->
-    <?php include "./templates/main-form.php" ?>
 
-    <button class="cancel-btn submit-btn" type="button">Cancel</button>
-</section>
 
 </body>
 </html>
