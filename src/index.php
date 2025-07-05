@@ -7,6 +7,7 @@
     <meta name="description" content="Calendar PHP App">
     <meta name="keys" content="">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
 </head>
 <body>
 
