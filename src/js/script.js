@@ -1,7 +1,7 @@
 //define
 const calendarElement = document.getElementById('calendar');
 const monthYearElement = document.getElementById('month-year');
-const modalElement = document.getElementById('modal');
+const modalElement = document.getElementById('eventModal');
 const currentDate = new Date();
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -15,7 +15,6 @@ function renderCalendar(date = new Date()) {
     const totalDays = new Date(year, month + 1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay();
 
-    monthYearElement.textContent = date.toLocaleString('default', {month: 'long', year: 'numeric'});
     monthYearElement.textContent = date.toLocaleString('default', {month: 'long', year: 'numeric'});
 
     weekDays.forEach(day => {
@@ -92,12 +91,7 @@ function renderCalendar(date = new Date()) {
                 openModalEdit(eventToday)
             }
 
-            // Iterate through each event in eventToday and create/append an element
-            eventToday.forEach(event => {
-                const eventElement = document.createElement('div'); // Or whatever element type is appropriate
-                eventElement.textContent = event.title; // Assuming event has a title property
-                overlay.appendChild(eventElement);
-            });
+            overlay.appendChild(editButton);
         }
 
         dayCell.appendChild(overlay);
@@ -110,7 +104,7 @@ function openModalCreate(date) {
     document.getElementById("form-action").value = "add";
     document.getElementById("event-create-id").value = "";
     document.getElementById("event-edit-id").value = "";
-    document.getElementById("event-delete-id-id").value = "";
+    document.getElementById("event-delete-id").value = "";
     document.getElementById("event-title").value = "";
     document.getElementById("event-date").value = date;
     document.getElementById("event-start-time").value = "09:00";
@@ -179,7 +173,23 @@ function clock() {
     ].join(":")
 }
 
+//EVENT LISTENERS
+document.querySelector('.close-btn').addEventListener('click', closeModal);
+document.querySelector('.cancel-btn').addEventListener('click', closeModal);
+document.querySelector('.modal-overlay').addEventListener('click', closeModal);
+
+document.querySelector('.nav-btn-left').addEventListener('click', () => changeMonth(-1));
+document.querySelector('.nav-btn-right').addEventListener('click', () => changeMonth(1));
+
+// Event delegation for event selector
+document.getElementById('eventSelector').addEventListener('change', function() {
+    const selectedEvent = events.find(e => e.id == this.value);
+    if (selectedEvent) {
+        handleEventSelection(JSON.stringify(selectedEvent));
+    }
+});
+
 //INITIALIZE APP
 clock();
 setInterval(clock, 1000);
-renderCalendar(currentDate)
+renderCalendar(currentDate);
