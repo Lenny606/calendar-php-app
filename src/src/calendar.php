@@ -86,3 +86,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     header("Location: /" . $_SERVER["PHP_SELF"] . "/success=true");
     exit;
 }  //EDIT
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" &&
+    isset($_POST["form-action"]) &&
+    $_POST["form-action"] === "delete"
+) {
+    $eventId = $_POST["event-delete-id"];
+
+    if (empty($eventId)) {
+        $errorMessage = "Event ID is required";
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        exit;
+    }
+
+    /** @var mysqli $connection */
+    $stmt = $connection->prepare("DELETE FROM events WHERE id = ?");
+    $stmt->bind_param("i", $eventId);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=true");
+    exit;
+}  //DELETE
