@@ -26,9 +26,23 @@
 
     <!--     ACTIONs    -->
     <input type="hidden" id="form-action" name="form-action" value="create">
-    <input type="hidden" id="event-id" name="event-id" value>
+    <input type="hidden" id="event-create-id" name="event-create-id" value>
 
     <div class="form-group">
         <button type="submit" class="submit-btn">Create Event</button>
     </div>
 </form>
+
+
+<form action="" method="POST" class="event-form" id="event-form" onsubmit="return confirm('Confirm to delete')">
+
+    <!--     ACTIONs    -->
+    <input type="hidden" id="form-action" name="form-action" value="delete">
+    <input type="hidden" id="event-delete-id" name="event-delete-id" value>
+
+    <div class="form-group">
+        <button type="submit" class="submit-btn">Delete Event</button>
+    </div>
+</form>
+
+<button class="cancel-btn submit-btn" type="button">Cancel</button>
