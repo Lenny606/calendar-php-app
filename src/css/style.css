@@ -102,12 +102,6 @@ header {
     margin-top: 15px;
 }
 
-.calendar-grid div {
-    padding: 10px;
-    text-align: center;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
 
 .calendar-grid .day-header {
     font-weight: bold;
@@ -167,7 +161,7 @@ header {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1002;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .modal-header {
@@ -297,7 +291,6 @@ header {
 /* Day and Event Styles */
 .day-name {
     font-weight: bold;
-    background-color: #3498db;
     color: var(--primary-color);
     padding: 8px 0;
     border-radius: 4px;
@@ -407,5 +400,13 @@ header {
         gap: 10px;
         scroll-snap-type: x mandatory;
         overflow-x: auto;
+    }
+
+    /*TODO not working properly*/
+    .calendar-grid div {
+        padding: 10px;
+        text-align: center;
+        border-radius: 4px;
+        background-color: #f9f9f9;
     }
 }
