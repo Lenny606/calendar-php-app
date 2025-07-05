@@ -41,12 +41,46 @@ You can modify the environment variables in the `.env` file:
 │   └── php
 │       └── Dockerfile
 ├── src
+│   ├── db
+│   │   ├── migrations
+│   │   │   └── *.sql
+│   │   ├── connection.php
+│   │   └── migrate.php
 │   └── index.php
 ├── .env
 ├── docker-compose.yml
+├── migrate.bat
+├── migrate.sh
 └── README.md
 ```
 
 ## Development
 
 Place your PHP files in the `src` directory. The directory is mounted as a volume, so changes will be reflected immediately.
+
+## Database Migrations
+
+This project includes a simple database migration system to manage database schema changes.
+
+### Creating Migrations
+
+1. Create SQL migration files in the `src/db/migrations` directory
+2. Name your migration files using the format: `YYYYMMDD_HHMMSS_description.sql`
+   - Example: `20230101_120000_create_users_table.sql`
+3. Each migration file should contain valid SQL statements
+
+### Running Migrations
+
+To run migrations:
+
+- On Windows: Run `migrate.bat`
+- On Linux/macOS: Run `./migrate.sh` (make it executable first with `chmod +x migrate.sh`)
+
+The migration system will:
+1. Create a `migrations` table if it doesn't exist
+2. Execute any new migration files that haven't been run yet
+3. Track executed migrations to prevent duplicate runs
+
+### Migration Order
+
+Migrations are executed in alphabetical order based on their filenames, which is why the timestamp naming convention is important to ensure proper sequencing.
