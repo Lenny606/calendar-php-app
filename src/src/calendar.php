@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     if (empty($event) || empty($date) || empty($startTime) || empty($endTime)) {
         $errorMessage = "All fields are required";
         header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
-        exit;;
+        exit;
     }
 
     if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $date)) {
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     if (empty($eventId) ||empty($event) || empty($date) || empty($startTime) || empty($endTime)) {
         $errorMessage = "All fields are required";
         header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
-        exit;;
+        exit;
     }
 
     if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $date)) {
