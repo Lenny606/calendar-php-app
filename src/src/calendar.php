@@ -138,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
 $dtbEvents = [];
 
 // MESSAGES AFTER SUBMIT ------------------------
-if ($_SERVER['GET']) {
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["success"])) {
         $successType = $_GET["success"];
         $successMessage = match ($successType) {
