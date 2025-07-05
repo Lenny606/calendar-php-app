@@ -19,20 +19,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
 
     if (empty($event) || empty($date) || empty($startTime) || empty($endTime)) {
         $errorMessage = "All fields are required";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
     if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $date)) {
         $errorMessage = "Invalid date format";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
     if (!preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $startTime) ||
         !preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $endTime)) {
         $errorMessage = "Invalid time format";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     $stmt->execute();
     $stmt->close();
 
-    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=true");
+    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=1");
     exit;
 
 }//CREATE
@@ -60,20 +60,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
 
     if (empty($eventId) ||empty($event) || empty($date) || empty($startTime) || empty($endTime)) {
         $errorMessage = "All fields are required";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
     if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $date)) {
         $errorMessage = "Invalid date format";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
     if (!preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $startTime) ||
         !preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $endTime)) {
         $errorMessage = "Invalid time format";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     $stmt->execute();
     $stmt->close();
 
-    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=true");
+    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=2");
     exit;
 }  //EDIT
 
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
 
     if (empty($eventId)) {
         $errorMessage = "Event ID is required";
-        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=true");
+        header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
     }
 
@@ -106,6 +106,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     $stmt->execute();
     $stmt->close();
 
-    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=true");
+    header("Location: /" . $_SERVER["PHP_SELF"] . "/success=3");
     exit;
 }  //DELETE
