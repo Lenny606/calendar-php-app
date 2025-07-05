@@ -160,3 +160,24 @@ function handleEventSelection(eventJson) {
 function closeModal() {
     modalElement.style.display = "none";
 }
+
+//MONTH NAVIGATION
+function changeMonth(offset) {
+    currentDate.setMonth(currentDate.getMonth() + offset);
+    renderCalendar(currentDate);
+}
+
+function clock() {
+    const now = new Date();
+    const clock = document.getElementById("clock");
+    clock.textContent = [
+        now.getHours().toString().padStart(2,"0"),
+        now.getMinutes().toString().padStart(2,"0"),
+        now.getSeconds().toString().padStart(2,"0")
+    ].join(":")
+}
+
+//INITIALIZE APP
+clock();
+setInterval(clock, 1000);
+renderCalendar(currentDate)
