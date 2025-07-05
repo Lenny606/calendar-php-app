@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<header>
-    <h1 class="title">
-        Calendar PHP App
-    </h1>
-</header>
+ <?php include "./templates/title.php" ?>
 <section class="clock-container">
     <div class="clock" id="clock"></div>
 </section>
