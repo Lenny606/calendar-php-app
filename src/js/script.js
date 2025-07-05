@@ -155,6 +155,8 @@ function handleEventSelection(eventJson) {
     document.getElementById("event-date").value = event.date || "";
     document.getElementById("event-start-time").value = event.startTime || "";
     document.getElementById("event-end-time").value = event.endTime || "";
+}
 
-
+function closeModal() {
+    modalElement.style.display = "none";
 }
