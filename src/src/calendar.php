@@ -2,6 +2,7 @@
 
 include __DIR__ . "/../db/connection.php";
 
+//Define variables
 $successMessage = "";
 $errorMessage = "";
 $dtbEvents = [];
@@ -58,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     $startTime = trim($_POST["event-start-time"]);
     $endTime = trim($_POST["event-end-time"]);
 
-    if (empty($eventId) ||empty($event) || empty($date) || empty($startTime) || empty($endTime)) {
+    if (empty($eventId) || empty($event) || empty($date) || empty($startTime) || empty($endTime)) {
         $errorMessage = "All fields are required";
         header("Location: /" . $_SERVER["PHP_SELF"] . "/error=1");
         exit;
@@ -109,3 +110,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
     header("Location: /" . $_SERVER["PHP_SELF"] . "/success=3");
     exit;
 }  //DELETE
+
+
+// MESSAGES AFTER SUBMIT ------------------------
+if ($_SERVER['GET']) {
+    if (isset($_GET["success"])) {
+        $successType = $_GET["success"];
+        $successMessage = match ($successType) {
+            "1" => "Event created successfully",
+            "2" => "Event edited successfully",
+            "3" => "Event deleted successfully",
+        };
+    }
+
+    if (isset($_GET["error"])) {
+        $errorMessage = "Error while submitting event";
+    }
+}
+
+//GET DATA
+/** @var mysqli $connection */
+$query= $connection->query("SELECT * FROM events");
+if ($query && $query->num_rows > 0) {
+    while ($row = $query->fetch_assoc()) {
+
+        $day = (new DateTime($row["date"]));
+        $startTime = (new DateTime($row["start_time"]))->format('H:i');
+        $endTime = (new DateTime($row["end_time"]))->format('H:i');
+
+        while ($startTime <= $endTime) {
+            $dtbEvents[] = [
+                'id' => $row["id"],
+                'title' => $row["title"],
+                'date' => $day->format('Y-m-d'),
+                'startTime' => $startTime,
+                'endTime' => $endTime
+            ];
+
+            //every time add 1 day
+            $day->modify('+1 day');
+        }
+
+    }
+}
+
+$connection->close();
