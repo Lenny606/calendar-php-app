@@ -10,8 +10,13 @@
     </div>
 
     <div class="form-group">
-        <label for="event-time">Time:</label>
-        <input type="time" id="event-time" name="event-time" required>
+        <label for="event-start-time">Time:</label>
+        <input type="time" id="event-start-time" name="event-start-time" required>
+    </div>
+
+    <div class="form-group">
+        <label for="event-end-time">Time:</label>
+        <input type="time" id="event-end-time" name="event-end-time" required>
     </div>
 
     <div class="form-group">
@@ -19,7 +24,7 @@
         <textarea id="event-description" name="event-description" rows="4"></textarea>
     </div>
 
-<!--     ACTIONs    -->
+    <!--     ACTIONs    -->
     <input type="hidden" id="form-action" name="form-action" value="create">
     <input type="hidden" id="event-id" name="event-id" value>
 
